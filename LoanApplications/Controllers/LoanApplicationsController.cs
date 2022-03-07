@@ -189,20 +189,20 @@ namespace LoanApplications.Web.Controllers
             }
         }
 
-        public async Task<IActionResult> EditApplicant(int applicationId)
+        public async Task<IActionResult> EditApplicant(int applicantId)
         {
-            var updatedUrl = url + "Applicants/" + applicationId.ToString();
+            var updatedUrl = url + "Applicants/" + applicantId.ToString();
             var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
 
              
-            return RedirectToAction("CreateBusinessInfo", new ApplicantModel { Id = Convert.ToInt32(applicationId) });
+            return View("EditApplicant", new ApplicantModel{Address = applicant.Address,FirstName = applicant.FirstName,Id=applicant.Id,LastName = applicant.LastName,Phone = applicant.Phone});
         }
         public async Task<IActionResult> EditBusinessInfo(int businessInfoId)
         {
             var updatedUrl = url + "BusinessInfo/" + businessInfoId.ToString();
             var businessInfo = JsonConvert.DeserializeObject<BusinessInfo>(await client.GetStringAsync(updatedUrl));
 
-            return RedirectToAction("CreateLoanApplication", new ApplicantModel { Id = Convert.ToInt32(businessInfoId) });
+            return    View("EditBusinessInfo", new BusinessInfoModel { Name = businessInfo.Name  });
         }
     }
 }

@@ -56,7 +56,7 @@
                
             </div>
             <div class="form-group">
-                <a asp-action="EditBusinessInfo" asp-for="ApplicantId" class="btn btn-primary">Back</a>
+                <a asp-action="EditBusinessInfo" asp-route-businessInfoId="@Model.ApplicantId" class="btn btn-primary">Back</a>
                 <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
