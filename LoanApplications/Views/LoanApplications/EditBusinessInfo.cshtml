@@ -1,4 +1,5 @@
-﻿@model LoanApplications.Shared.Domain.BusinessInfo
+﻿
+@model LoanApplications.Web.Models.BusinessInfoModel
 
 @{
     ViewData["Title"] = "EditBusinessInfo";
@@ -18,8 +19,11 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <input type="hidden" asp-for="Id" />
-            
+            <div style="display: none;">
+                <input asp-for="ApplicantId" class="form-control hide" />
+            </div>
+            <input type="hidden" asp-for="ApplicantId" />
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

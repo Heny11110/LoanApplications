@@ -29,8 +29,12 @@ namespace LoanApplications.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateApplicant(Applicant model)
+        public async Task<IActionResult> CreateApplicant(ApplicantModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             // var content = new HttpContent((model));
             var stringContent = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
 
@@ -51,6 +55,10 @@ namespace LoanApplications.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateBusinessInfo(ApplicantModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View( );
+            }
             var updatedUrl = url + "Applicants/" + model.Id.ToString();
             var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
             
@@ -66,6 +74,10 @@ namespace LoanApplications.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateLoanApplication(ApplicantModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View( );
+            }
             var updatedUrl = url + "Applicants/" + model.Id.ToString();
             var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
             var random = new Random();
@@ -110,6 +122,10 @@ namespace LoanApplications.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateBusinessInfo(BusinessInfoModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             var updatedUrl = url+"Applicants/" + model.ApplicantId.ToString();
             var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
 
@@ -143,6 +159,10 @@ namespace LoanApplications.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateLoanApplication(LoanApplicationModel model)
         {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
             var updatedUrl = url + "Applicants/" + model.ApplicantId.ToString();
             var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
 
@@ -173,6 +193,28 @@ namespace LoanApplications.Web.Controllers
                 ModelState.Clear();
                 return View();
             }
+        }
+
+        public async Task<IActionResult> EditApplicant(int applicationId)
+        {
+            var updatedUrl = url + "Applicants/" + applicationId.ToString();
+            var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
+
+            return View(new ApplicantModel
+            {
+                FirstName = applicant.FirstName,LastName = applicant.LastName,Address = applicant.Address,Id = applicant.Id,Phone = applicant.Phone
+
+            });
+        }
+        public async Task<IActionResult> EditBusinessInfo(int businessInfoId)
+        {
+            var updatedUrl = url + "BusinessInfo/" + businessInfoId.ToString();
+            var businessInfo = JsonConvert.DeserializeObject<BusinessInfo>(await client.GetStringAsync(updatedUrl));
+             
+            return View(new BusinessInfoModel
+            {
+                Name = businessInfo.Name
+            });
         }
     }
 }

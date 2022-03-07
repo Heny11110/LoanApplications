@@ -14,26 +14,27 @@ namespace LoanApplications.Web.Controllers
     public class SearchController : Controller
     {
         readonly HttpClient _client = new HttpClient();
-        string url = "https://localhost:44318/api/Applicants/";
+        string url  = "https://localhost:44318/api/";
+        
+        public IActionResult Index()
+        {
+            //var model = new SearchModel
+            //{
+            //    Applicants = JsonConvert.DeserializeObject<List<Applicant>>(await _client.GetStringAsync(url)).ToList()
+            //};
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var model = new SearchModel
-        //    {
-        //        Applicants = JsonConvert.DeserializeObject<List<Applicant>>(await _client.GetStringAsync(url)).ToList()
-        //    };
-            
-        //    return View(model);
-        //}
+            return View();
+        }
+        [HttpPost]
         public async Task<IActionResult> Index(SearchModel searchCriteria)
         {
-            var applicants = JsonConvert.DeserializeObject<List<Applicant>>(await _client.GetStringAsync(url)).ToList();
-            var loanApplications = JsonConvert.DeserializeObject<List<LoanApplication>>(await _client.GetStringAsync(url)).ToList();
-            var businessInfos = JsonConvert.DeserializeObject<List<BusinessInfo>>(await _client.GetStringAsync(url)).ToList();
+            var applicants = JsonConvert.DeserializeObject<List<Applicant>>(await _client.GetStringAsync(url+ "Applicants")).ToList();
+            var loanApplications = JsonConvert.DeserializeObject<List<LoanApplication>>(await _client.GetStringAsync(url+"LoanApplications")).ToList();
+            var businessInfos = JsonConvert.DeserializeObject<List<BusinessInfo>>(await _client.GetStringAsync(url+"BusinessInfo")).ToList();
             if (searchCriteria!=null)
             {
                 if (!String.IsNullOrEmpty(searchCriteria.FirstName))
-                    applicants = (List<Applicant>) applicants.Where(s => s.FirstName.Contains(searchCriteria.FirstName));
+                    applicants = (List<Applicant>) applicants.Where(s => s.FirstName.Contains(searchCriteria.FirstName)).ToList();
                 if (!String.IsNullOrEmpty(searchCriteria.LastName)) 
                     applicants = (List<Applicant>)applicants.Where(s => s.LastName.Contains(searchCriteria.LastName));
                 if ( searchCriteria.CreditRating.HasValue) 

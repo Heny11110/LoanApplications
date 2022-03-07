@@ -11,7 +11,8 @@ namespace LoanApplications.Web.Models
         [Required]
         public string LastName { get; set; }
         [Required]
-        public int Phone { get; set; }
+        [DisplayFormat(DataFormatString = "{0:###-###-####}")]
+        public long Phone { get; set; }
         [Required]
         public string Address { get; set; }
     }
