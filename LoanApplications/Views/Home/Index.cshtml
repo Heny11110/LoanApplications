@@ -1,0 +1,93 @@
+﻿
+@*@using LoanApplications.Web.Models
+@model IEnumerable<LoanApplications.Web.Models.ApplicantModel>
+
+
+
+<div> </div>
+<div>
+    <div> Authors </div>
+    <div>
+        <div class="btn-group">
+            <a id="createEditAuthorModal" data-toggle="modal" asp-action="AddAuthor" data-target="#modal-action-author"
+               class="btn btn-primary"> Add Author </a>
+        </div>
+        <div> </div>
+        <table>
+            <thead>
+                <tr>
+                    <th> Name </th>
+                    <th> Email </th>
+                    <th> Total Books </th>
+                    <th> Action </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td> @Html.DisplayFor(modelItem => item.LastName) </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@model IEnumerable<LoanApplications.Web.Models.ApplicantModel>
+    @using LoanApplications.Web.Models
+<div class = "top-buffer"> </div> <div class="panel panel-primary">
+
+    <div class="panel-heading panel-head"> Authors </div>
+    <div class="panel-body">
+        <div class="btn-group">
+
+            <a id="createEditAuthorModal"
+               data-toggle="modal"
+               asp-action="AddAuthor"
+               data-target="#modal-action-author"
+               class="btn btn-primary">
+                <i class="glyphicon glyphicon-plus"> </i> Add Author
+            </a>
+        </div>
+        <div class="top-buffer"> </div>
+        <table class="table table-bordered table-striped table-condensed">
+            <thead>
+
+            <tr>
+                <th> Name </th>
+                <th> Email </th>
+                <th> Total Books </th>
+                <th> Action </th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model)
+            {
+            <tr> <td> @Html.DisplayFor(modelItem => item.FirstName) </td>
+                <td> @Html.DisplayFor(modelItem => item.LastName) </td>
+                <td> @Html.DisplayFor(modelItem => item.Address) </td>
+                <td>
+
+
+                </td>
+            </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>

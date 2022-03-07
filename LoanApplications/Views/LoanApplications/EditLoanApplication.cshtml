@@ -1,0 +1,73 @@
+﻿@model LoanApplications.Shared.Domain.LoanApplication
+
+@{
+    ViewData["Title"] = "EditLoanApplication";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>EditLoanApplication</h1>
+
+<h4>LoanApplication</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="EditLoanApplication">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LoanRequested" class="control-label"></label>
+                <input asp-for="LoanRequested" class="form-control" />
+                <span asp-validation-for="LoanRequested" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MonthsToPayback" class="control-label"></label>
+                <input asp-for="MonthsToPayback" class="form-control" />
+                <span asp-validation-for="MonthsToPayback" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="APRRate" class="control-label"></label>
+                <input asp-for="APRRate" class="form-control" />
+                <span asp-validation-for="APRRate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditRating" class="control-label"></label>
+                <input asp-for="CreditRating" class="form-control" />
+                <span asp-validation-for="CreditRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NumberOfDefaults" class="control-label"></label>
+                <input asp-for="NumberOfDefaults" class="form-control" />
+                <span asp-validation-for="NumberOfDefaults" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LateLoanPayments" class="control-label"></label>
+                <input asp-for="LateLoanPayments" class="form-control" />
+                <span asp-validation-for="LateLoanPayments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalOutstandingDebt" class="control-label"></label>
+                <input asp-for="TotalOutstandingDebt" class="form-control" />
+                <span asp-validation-for="TotalOutstandingDebt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RiskRating" class="control-label"></label>
+                <input asp-for="RiskRating" class="form-control" />
+                <span asp-validation-for="RiskRating" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

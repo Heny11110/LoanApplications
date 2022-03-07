@@ -1,0 +1,12 @@
+
+bin/Debug/netcoreapp3.1/LoanApplications.Shared.deps.json
+bin/Debug/netcoreapp3.1/LoanApplications.Shared.dll
+bin/Debug/netcoreapp3.1/LoanApplications.Shared.exe
+bin/Debug/netcoreapp3.1/LoanApplications.Shared.pdb
+bin/Debug/netcoreapp3.1/LoanApplications.Shared.runtimeconfig.dev.json
+bin/Debug/netcoreapp3.1/LoanApplications.Shared.runtimeconfig.json
+bin/Debug/netcoreapp3.1/LoanApplications.Web.deps.json
+bin/Debug/netcoreapp3.1/LoanApplications.Web.dll
+bin/Debug/netcoreapp3.1/LoanApplications.Web.pdb
+bin/Debug/netcoreapp3.1/LoanApplications.Web.Views.dll
+bin/Debug/netcoreapp3.1/LoanApplications.Web.Views.pdb
