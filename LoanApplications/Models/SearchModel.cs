@@ -12,7 +12,7 @@ namespace LoanApplications.Web.Models
         public string LastName { get; set; }
         public decimal? LoanAmount { get; set; }
         public string BusinessName { get; set; }
-        public string CreditRating { get; set; }
+        public int? CreditRating { get; set; }
         public IEnumerable<Applicant> Applicants { get; set; }
 
     }

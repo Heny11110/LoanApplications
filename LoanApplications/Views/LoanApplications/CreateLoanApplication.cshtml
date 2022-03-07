@@ -38,11 +38,7 @@
                 <input asp-for="CreditRating" class="form-control" />
                 <span asp-validation-for="CreditRating" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="NumberOfDefaults" class="control-label"></label>
-                <input asp-for="NumberOfDefaults" class="form-control" />
-                <span asp-validation-for="NumberOfDefaults" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <label asp-for="LateLoanPayments" class="control-label"></label>
                 <input asp-for="LateLoanPayments" class="form-control" />
@@ -53,25 +49,22 @@
                 <input asp-for="TotalOutstandingDebt" class="form-control" />
                 <span asp-validation-for="TotalOutstandingDebt" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="RiskRating" class="control-label"></label>
-                <input asp-for="RiskRating" class="form-control" />
-                <span asp-validation-for="RiskRating" class="text-danger"></span>
-            </div>
-            <div class="form-group">
+             
+            <div style="display: none;">
                  
                 <input asp-for="ApplicantId" class="form-control hide" />
                
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="CreateBusinessInfo" class="btn btn-primary">Back</a>
+                <input type="submit" value="Submit" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div class="form-group">
-    <a asp-action="CreateBusinessInfo">Back</a>
-    <a asp-action="Index">Submit</a>
+    
+    
 </div>
 

@@ -68,15 +68,32 @@ namespace LoanApplications.Web.Controllers
         {
             var updatedUrl = url + "Applicants/" + model.Id.ToString();
             var applicant = JsonConvert.DeserializeObject<Applicant>(await client.GetStringAsync(updatedUrl));
-           
+            var random = new Random();
+            int apr = random.Next(4, 12);
             var loanApplication = new LoanApplicationModel
             {
-                ApplicantId = model.Id
+                ApplicantId = model.Id,
+              
+
             };
-            if (applicant.LoanApplications==null) return View(loanApplication);
+            if (applicant.LoanApplications == null)
+            {
+                loanApplication.APRRate = apr * 100;
+                loanApplication.CreditRating = random.Next(600, 750);
+                loanApplication.LateLoanPayments = random.Next(25000, 1000000);
+                return View(loanApplication);
+            }
             var loanApp = applicant.LoanApplications.FirstOrDefault();
-            if (loanApp == null) return View(loanApplication);
-            loanApplication.APRRate = loanApp.APRRate;
+            if (loanApp == null)
+            {
+                loanApplication.APRRate = apr * 100;
+                loanApplication.CreditRating = random.Next(600, 750);
+                loanApplication.LateLoanPayments = random.Next(25000, 1000000);
+                
+
+                return View(loanApplication);
+            }
+         
             loanApplication.Name = loanApp.Name;
             loanApplication.APRRate = loanApp.APRRate;
             loanApplication.CreditRating = loanApp.CreditRating;
@@ -138,7 +155,7 @@ namespace LoanApplications.Web.Controllers
                 LoanRequested = model.LoanRequested,
                 MonthsToPayback = model.MonthsToPayback,
                 NumberOfDefaults = model.NumberOfDefaults,
-                RiskRating = model.RiskRating
+                RiskRating =  Shared.BusinessLogic.Calculations.CalculateRisk(model.CreditRating )
 
             };
             applicant.LoanApplications = new List<LoanApplication>();

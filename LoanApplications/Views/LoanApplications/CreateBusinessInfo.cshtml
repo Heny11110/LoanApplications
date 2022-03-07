@@ -20,11 +20,12 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             
-            <div class="hide">
+            <div style="display: none;">
                 <input asp-for="ApplicantId" class="form-control hide" />
             </div>
             <div class="form-group">
-                <input type="submit" value="Next" class="btn btn-primary" />
+                <a asp-action="CreateApplicant" class="btn btn-primary">Back</a> 
+                <input type="submit" value="Next" class="btn btn-primary"/>
 
             </div>
         </form>
@@ -32,7 +33,6 @@
 </div>
 
 <div class="form-group">
-    <a asp-action="CreateApplicant" class="btn btn-primary">Back</a>
-    <a asp-action="CreateLoanApplication" class="btn btn-primary">Next</a>
+  
 </div>
 
