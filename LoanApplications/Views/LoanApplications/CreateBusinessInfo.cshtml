@@ -20,12 +20,12 @@
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             
-            <div style="display: none;">
-                <input asp-for="ApplicantId" class="form-control hide" />
+            <div >
+                <input type="hidden" asp-for="ApplicantId" class="form-control hide" />
             </div>
             <div class="form-group">
-                <a asp-action="EditApplicant" asp-for="ApplicantId" class="btn btn-primary">Back</a> 
-                <input type="submit" value="Next" class="btn btn-primary"/>
+                <a asp-action="EditApplicant" asp-route-id="ApplicantId" class="btn btn-primary" >Back</a>
+                <input type="submit" value="Next" class="btn btn-primary" />
 
             </div>
         </form>
